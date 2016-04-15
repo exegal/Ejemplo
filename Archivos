@@ -1,0 +1,46 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+
+
+
+
+class MiArchivo {// Ejercicio 8----------------------CODIGO QUE PUEDE LLEGAR A ESTAR MAL---------------------------
+	
+	
+	@SuppressWarnings("finally")
+	public int  buscarPalabra(String buscado, String archivo) throws IOException{
+		
+		int cantidad=0;
+		String linea;
+		BufferedReader in = null;
+		try{
+			
+			in = new BufferedReader(new FileReader(archivo));
+			
+			while ((linea = in.readLine()) != null ){
+				StringTokenizer st = new StringTokenizer (linea , "/");
+				
+				
+				while(st.hasMoreTokens()){
+					if (st.nextToken().equals(buscado));// ESTE CODIGO COMO BUSCA EN UN ARRAY DE STRING, LO QUE HACE ES CHEQUEAR QUE SEA DEL MISMO TIPO Y DESPUES COMPARA
+					cantidad ++;
+				}
+			}
+		
+		}
+		
+		catch (Exception e){
+			System.out.print(e);
+		}
+		
+		finally {
+			in.close();
+			return cantidad;
+		}
+		
+	}
+
+}
